@@ -6,7 +6,7 @@ import org.leanpoker.player.preflop.AfterFlopper;
 import org.leanpoker.player.preflop.PreFlopper;
 
 public class Player {
-    static final String VERSION = "v0.2 always in";
+    static final String VERSION = "v0.3";
 
     public static int betRequest(JsonElement request) {
         GameState state = new GameState(request);

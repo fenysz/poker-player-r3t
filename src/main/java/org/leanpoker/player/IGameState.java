@@ -23,5 +23,6 @@ public interface IGameState {
     List<Card> getCardsOnBoard();
     
     int getMinimumRaise();
-    
+
+    int getStack();
 }

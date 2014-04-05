@@ -8,8 +8,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,9 +20,10 @@ public class GameState implements IGameState {
 
     int currentByIn;
     int playerIndex;
-    
+
     int minimumRaise;
-    
+    int stack;
+
     List<Card> communityCards;
 
     GameState(JsonElement element) {
@@ -32,7 +31,8 @@ public class GameState implements IGameState {
         JsonObject player = getState(element).getAsJsonArray("players").get(playerIndex).getAsJsonObject();
         JsonObject jsonCard1 = player.getAsJsonArray("hole_cards").get(0).getAsJsonObject();
         JsonObject jsonCard2 = player.getAsJsonArray("hole_cards").get(1).getAsJsonObject();
-        
+
+        stack = player.get("stack").getAsInt();
         minimumRaise = getState(element).get("minimum_raise").getAsInt();
 
         currentByIn = element.getAsJsonObject().get("current_buy_in").getAsInt();
@@ -85,5 +85,10 @@ public class GameState implements IGameState {
 
     public List<Card> getCardsOnBoard() {
         return communityCards;
+    }
+
+    @Override
+    public int getStack() {
+        return stack;
     }
 }

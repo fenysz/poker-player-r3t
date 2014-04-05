@@ -31,11 +31,13 @@ public class AfterFlopper {
     public int bet() {
         Ranking rank = RankingService.getRanking(cardList);
         if (rank != null) {
-            if (rank.getRank()> Rank.PAIR.getValue()) {
+            if (rank.getRank() >= Rank.FLUSH.getValue()) {
+                return gameState.getStack();
+            }
+            if (rank.getRank() >= Rank.PAIR.getValue()) {
                 return gameState.getMinimumRaise() * rank.getRank();
             }
-            return gameState.getMinimumRaise() + 30;
         }
-        return gameState.getMinimumRaise();
+        return 0;
     }
 }
