@@ -28,7 +28,11 @@ public class PreFlopper {
         
         if(card1.getRank().equals(card2.getRank())) {
             fineHand = true ;
-            raiseValue += 3;
+            if(isLetter(card1.getRank())){
+                raiseValue += 2;
+            } else {
+                raiseValue +=1;
+            }
         } 
         if(card1.getSuit().equals(card2.getSuit())){
             fineHand = true ;
@@ -39,7 +43,7 @@ public class PreFlopper {
             raiseValue += 1;
         }
         
-        if(gameState.getCurrentByIn() >= gameState.getStack() / 2){
+        if(gameState.getCurrentByIn() >= gameState.getStack() * 0.75){
             return 0;
         }
         
@@ -52,7 +56,7 @@ public class PreFlopper {
     }
     
     private int getRaiseValue(int multiplier){
-        int raiseMoney = Math.round(gameState.getStack() / 10);
+        int raiseMoney = gameState.getMinimumRaise();
         return gameState.getCurrentByIn() + raiseMoney * multiplier;
     }
 

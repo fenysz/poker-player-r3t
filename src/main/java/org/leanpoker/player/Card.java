@@ -26,6 +26,19 @@ public class Card {
         return suit;
     }
 
+    public int getIntRank(){
+        try {
+            return Integer.parseInt(rank);
+        } catch(Exception e) {
+            switch (rank){
+                case "J": return 11;
+                case "Q": return 12;
+                case "K": return 13;
+                default:
+                case "A": return 14;
+            } 
+        }
+    }
 
     public static List<Card> parse(JsonArray communityCardsJson) {
         List<Card> cardList = new ArrayList<Card>();

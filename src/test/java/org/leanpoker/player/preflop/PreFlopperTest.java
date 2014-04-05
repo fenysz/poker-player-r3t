@@ -27,7 +27,7 @@ public class PreFlopperTest {
     @Test
     public void testPair() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","4", "4", 100, 50 ));
-        assertEquals(350, flopper.bet());
+        assertEquals(150, flopper.bet());
     }
     @Test
     public void testHigh() {
