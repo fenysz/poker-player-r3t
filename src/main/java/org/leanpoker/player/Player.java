@@ -34,11 +34,11 @@ public class Player {
 
         }
         List<Card> cardList = new ArrayList<Card>();
-        cardList.add(new Card(2, "diamonds"));
-        cardList.add(new Card(2, "spades"));
-        cardList.add(new Card(2, "spades"));
-        cardList.add(new Card(2, "spades"));
-        cardList.add(new Card(2, "spades"));
+        cardList.add(new Card("2", "diamonds"));
+        cardList.add(new Card("2", "spades"));
+        cardList.add(new Card("2", "spades"));
+        cardList.add(new Card("2", "spades"));
+        cardList.add(new Card("2", "spades"));
         Ranking rank = rs.getRanking(cardList);
 
         return 0;
