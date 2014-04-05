@@ -35,7 +35,10 @@ public class PreFlopper {
                 raiseValue +=1;
             }
         } 
-        if(card1.getSuit().equals(card2.getSuit())){
+        if(card1.getSuit().equals(card2.getSuit())
+                &&
+           (isLetter(card1.getRank()) || isLetter(card2.getRank()))
+                ){
             fineHand = true ;
             raiseValue += 2;
         } 
