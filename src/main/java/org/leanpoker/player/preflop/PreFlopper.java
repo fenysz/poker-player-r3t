@@ -46,9 +46,9 @@ public class PreFlopper {
         
         if(fineHand){
             return getRaiseValue(raiseValue);
+        } else {
+            return 0;
         }
-        
-        return gameState.getCurrentByIn();
     }
     
     private int getRaiseValue(int multiplier){
