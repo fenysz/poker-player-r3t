@@ -55,7 +55,7 @@ public class PlayerTest {
 "    ],\n" +
 "    \"community_cards\": [\n" +
 "        {\n" +
-"            \"rank\": \"4\",\n" +
+"            \"rank\": \"K\",\n" +
 "            \"suit\": \"spades\"\n" +
 "        },\n" +
 "        {\n" +
@@ -63,11 +63,11 @@ public class PlayerTest {
 "            \"suit\": \"hearts\"\n" +
 "        },\n" +
 "        {\n" +
-"            \"rank\": \"6\",\n" +
+"            \"rank\": \"7\",\n" +
 "            \"suit\": \"clubs\"\n" +
 "        },\n" +
 "        {\n" +
-"            \"rank\": \"4\",\n" +
+"            \"rank\": \"8\",\n" +
 "            \"suit\": \"clubs\"\n" +
 "        },\n" +
 "        {\n" +
@@ -81,6 +81,6 @@ public class PlayerTest {
     public void testBetRequest() throws Exception {
         RankingService.url="http://192.168.57.181:2048";
         JsonElement jsonElement = new JsonParser().parse(testString);
-        //assertEquals(480, Player.betRequest(jsonElement));
+        //assertEquals(560, Player.betRequest(jsonElement));
     }
 }

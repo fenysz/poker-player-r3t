@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class RankingService {
 
-    public static String url="http://localhost:2048";
+    public static String url = "http://192.168.57.181:2048";
 
     public static Ranking getRanking(List<Card> cardList) {
         try {
@@ -50,11 +50,10 @@ public class RankingService {
             return rank;
 
         } catch (Exception e) {
-            System.out.println("url"+url);
+            System.out.println("url= " + url);
             System.out.println(e.getLocalizedMessage());
             e.printStackTrace();
             return null;
         }
-
     }
 }
