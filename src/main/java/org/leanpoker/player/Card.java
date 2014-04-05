@@ -1,5 +1,11 @@
 package org.leanpoker.player;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by roland on 2014.04.05..
  */
@@ -18,5 +24,15 @@ public class Card {
 
     public String getSuit() {
         return suit;
+    }
+
+
+    public static List<Card> parse(JsonArray communityCardsJson) {
+        List<Card> cardList = new ArrayList<Card>();
+        for (int i = 0; i < communityCardsJson.size(); i++) {
+            JsonObject cardObject = communityCardsJson.get(i).getAsJsonObject();
+            cardList.add(new Card(cardObject.get("rank").getAsString(), cardObject.get("suit").getAsString()));
+        }
+        return cardList;
     }
 }

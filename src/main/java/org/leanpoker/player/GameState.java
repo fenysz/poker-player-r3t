@@ -46,11 +46,7 @@ public class GameState implements IGameState {
         card2 = new Card(rank2, suit2);
         JsonArray communityCardsJson = getState(element).get("community_cards").getAsJsonArray();
 
-        communityCards = new ArrayList<Card>();
-        for (int i = 0; i < communityCardsJson.size(); i++) {
-            JsonObject cardObject = communityCardsJson.get(i).getAsJsonObject();
-            communityCards.add(new Card(cardObject.get("rank").getAsString(), cardObject.get("suit").getAsString()));
-        }
+        communityCards = Card.parse(communityCardsJson);
     }
 
     public int getMinimumRaise() {
