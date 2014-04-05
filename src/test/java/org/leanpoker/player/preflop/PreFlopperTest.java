@@ -88,6 +88,11 @@ public class PreFlopperTest {
         public int getStack() {
             return 1000;
         }
+
+        @Override
+        public boolean isBlind() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     
     }
 }
