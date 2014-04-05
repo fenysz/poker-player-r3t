@@ -6,12 +6,14 @@ package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
  * @author athalay
  */
-public class GameState {
+public class GameState implements IGameState {
     
     Card card1;
     Card card2;
@@ -19,7 +21,7 @@ public class GameState {
     int currentByIn;
     int playerIndex ;
 
-    GameState(JsonElement element) {
+    public GameState(JsonElement element) {
         playerIndex = getState(element).get("in_action").getAsInt();
         JsonObject player = getState(element).getAsJsonArray("players").get(playerIndex).getAsJsonObject();
         JsonObject jsonCard1 = player.getAsJsonArray("hole_cards").get(0).getAsJsonObject();
@@ -44,20 +46,29 @@ public class GameState {
         return (JsonObject) request;
     }
 
+    @Override
     public Card getCard1() {
         return card1;
     }
 
+    @Override
     public Card getCard2() {
         return card2;
     }
 
+    @Override
     public int getCurrentByIn() {
         return currentByIn;
     }
 
+    @Override
     public int getPlayerIndex() {
         return playerIndex;
+    }
+
+    @Override
+    public List<Card> getCardsOnBoard() {
+        return Collections.emptyList();
     }
     
     
