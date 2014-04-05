@@ -17,7 +17,7 @@ public class RankingService {
 
     public static String url="http://localhost:2048";
 
-    public Ranking getRanking(List<Card> cardList) {
+    public static Ranking getRanking(List<Card> cardList) {
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();

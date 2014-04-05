@@ -14,22 +14,22 @@ import java.util.List;
  */
 public class AfterFlopper {
     private IGameState gameState;
+    List<Card> cardList;
 
     public AfterFlopper(IGameState state) {
         this.gameState = state;
-    }
-
-    public int bet() {
         Card card1 = gameState.getCard1();
         Card card2 = gameState.getCard2();
-        List<Card> cardList = new ArrayList<Card>();
+        cardList = new ArrayList<Card>();
         cardList.add(card1);
         cardList.add(card2);
         for (Card card : gameState.getCardsOnBoard()) {
             cardList.add(card);
         }
-        RankingService rs = new RankingService();
-        Ranking rank = rs.getRanking(cardList);
+    }
+
+    public int bet() {
+        Ranking rank = RankingService.getRanking(cardList);
         if (rank != null) {
             if (rank.getRank()> Rank.PAIR.getValue()) {
                 return gameState.getMinimumRaise() * rank.getRank();
