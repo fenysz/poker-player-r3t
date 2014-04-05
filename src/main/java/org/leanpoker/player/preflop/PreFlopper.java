@@ -42,15 +42,15 @@ public class PreFlopper {
             fineHand = true ;
             raiseValue += 2;
         } 
-        if (Math.abs(card1.getIntRank() - card2.getIntRank()) == 1 || Math.abs(card1.getIntRank() - card2.getIntRank()) == 12) {
-            fineHand = true;
-            raiseValue = 1;
-        }
         if(isLetter(card1.getRank()) && isLetter(card2.getRank())){
             fineHand = true ;
             raiseValue += 1;
         }
-        
+        if (Math.abs(card1.getIntRank() - card2.getIntRank()) == 1 || Math.abs(card1.getIntRank() - card2.getIntRank()) == 12) {
+            fineHand = true;
+            raiseValue = 0;
+        }
+
         if(fineHand){
             return getRaiseValue(raiseValue);
         } else {
