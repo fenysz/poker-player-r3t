@@ -25,9 +25,9 @@ public class Ranking {
                 return;
             }
         } catch (Exception e) {
-            rank = Integer.parseInt(jsonObject.getAsJsonPrimitive("rank").toString());
-            value = Integer.parseInt(jsonObject.getAsJsonPrimitive("value").toString());
-            secondValue = Integer.parseInt(jsonObject.getAsJsonPrimitive("second_value").toString());
+            rank = Integer.parseInt(jsonObject.getAsJsonPrimitive("rank").getAsString());
+            value = Integer.parseInt(jsonObject.getAsJsonPrimitive("value").getAsString());
+            secondValue = Integer.parseInt(jsonObject.getAsJsonPrimitive("second_value").getAsString());
             usedCards = Card.parse(jsonObject.getAsJsonArray("cards_used"));
         }
     }
