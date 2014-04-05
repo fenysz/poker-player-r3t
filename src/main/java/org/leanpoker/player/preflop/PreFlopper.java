@@ -28,6 +28,6 @@ public class PreFlopper {
         } else if(card1.getSuit().equals(card2.getSuit())){
             return gameState.getCurrentByIn() + 300;
         }
-        return 0;
+        return gameState.getCurrentByIn();
     }
 }
