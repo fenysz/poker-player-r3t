@@ -25,4 +25,6 @@ public interface IGameState {
     int getMinimumRaise();
 
     int getStack();
+
+    boolean isBlind();
 }

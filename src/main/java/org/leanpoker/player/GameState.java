@@ -25,6 +25,8 @@ public class GameState implements IGameState {
     int stack;
     int remainingMoney;
 
+    boolean isBlind;
+
     List<Card> communityCards;
 
     GameState(JsonElement element) {
@@ -48,6 +50,12 @@ public class GameState implements IGameState {
         JsonArray communityCardsJson = getState(element).get("community_cards").getAsJsonArray();
 
         communityCards = Card.parse(communityCardsJson);
+
+        isBlind = false;
+        int dealer = getState(element).get("dealer").getAsInt();
+        if (playerIndex == dealer + 1 || playerIndex == dealer + 2) {
+            isBlind = true;
+        }
     }
 
     @Override
@@ -92,5 +100,9 @@ public class GameState implements IGameState {
     @Override
     public int getStack() {
         return stack;
+    }
+
+    public boolean isBlind() {
+        return isBlind;
     }
 }
