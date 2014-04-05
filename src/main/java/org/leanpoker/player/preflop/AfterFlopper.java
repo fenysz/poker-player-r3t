@@ -35,7 +35,7 @@ public class AfterFlopper {
                 return gameState.getStack();
             }
             if (rank.getRank() >= Rank.PAIR.getValue()) {
-                return gameState.getMinimumRaise() * rank.getRank();
+                return gameState.getCurrentByIn() + gameState.getMinimumRaise() * rank.getRank();
             }
         }
         return 0;
