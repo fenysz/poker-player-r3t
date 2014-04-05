@@ -82,7 +82,8 @@ public class GameStateTest {
         JsonElement element = parseTestString();
         GameState gameState = new GameState(element);
         
-        //assertEquals(CardRound.FLOP, gameState.getCards());
+        assertEquals("6", gameState.getCard1().rank);
+        assertEquals("K", gameState.getCard2().rank);
     }
     
     private JsonElement parseTestString(){
