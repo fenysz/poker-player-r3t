@@ -20,26 +20,53 @@ public class PreFlopperTest {
     }
 
     @Test
-    public void testSomeMethod() {
-        PreFlopper flopper = new PreFlopper(new TestGameState());
+    public void testOneColor() {
+        PreFlopper flopper = new PreFlopper(new TestGameState("diamonds","diamonds","4", "5", 100, 50 ));
         assertEquals(300, flopper.bet());
+    }
+    @Test
+    public void testPair() {
+        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","4", "4", 100, 50 ));
+        assertEquals(600, flopper.bet());
+    }
+    @Test
+    public void testHigh() {
+        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","K", "A", 100, 50 ));
+        assertEquals(200, flopper.bet());
     }
     
     public static class TestGameState implements IGameState {
         
+        String card1Suite;
+        String card2Suite;
+        String card1Rank;
+        String card2Rank;
+        int minBet;
+        int byIn;
+
+        public TestGameState(String card1Suite, String card2Suite, String card1Rank, String card2Rank, int minBet, int byIn) {
+            this.card1Suite = card1Suite;
+            this.card2Suite = card2Suite;
+            this.card1Rank = card1Rank;
+            this.card2Rank = card2Rank;
+            this.minBet = minBet;
+            this.byIn = byIn;
+        }
+        
+        
         @Override
         public Card getCard1() {
-            return new Card("3", "diamonds");
+            return new Card(card1Rank, card1Suite);
         }
 
         @Override
         public Card getCard2() {
-            return new Card("4", "diamonds");
+            return new Card(card2Rank, card2Suite);
         }
 
         @Override
         public int getCurrentByIn() {
-            return 0;
+            return byIn;
         }
 
         @Override
@@ -54,7 +81,7 @@ public class PreFlopperTest {
 
         @Override
         public int getMinimumRaise() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return minBet;
         }
     
     }
