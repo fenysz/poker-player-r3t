@@ -2,10 +2,7 @@ package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -20,7 +17,7 @@ public class RankingService {
 
     public Ranking getRanking(List<Card> cardList) {
         try {
-            String url = "http://192.168.57.181:2048";
+            String url = "http://localhost:2048";
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -56,12 +53,5 @@ public class RankingService {
             return null;
         }
 
-    }
-
-    Client createClient() {
-        return ClientBuilder
-                .newBuilder()
-                .register(JacksonJaxbJsonProvider.class)
-                .build();
     }
 }
