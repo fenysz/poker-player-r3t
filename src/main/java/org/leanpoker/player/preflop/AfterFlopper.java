@@ -7,7 +7,9 @@ package org.leanpoker.player.preflop;
 import org.leanpoker.player.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author athalay
@@ -36,6 +38,23 @@ public class AfterFlopper {
             }
             if (rank.getRank() >= Rank.PAIR.getValue()) {
                 return gameState.getCurrentByIn() + gameState.getMinimumRaise() * rank.getRank();
+            }
+            Map<String,Integer> map = new HashMap<>();
+            for (Card card : cardList) {
+                Integer colorCounter  =map.get(card.getSuit());
+                if(colorCounter==null){
+                    colorCounter = 1;
+                    map.put(card.getSuit(), colorCounter);
+                } else {
+                    colorCounter++;
+                    map.put(card.getSuit(), colorCounter);
+                }      
+            }
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                Integer number = entry.getValue();
+                if(number >=4 ){
+                    return gameState.getCurrentByIn() + gameState.getMinimumRaise()*2;
+                }
             }
         }
         return 0;
