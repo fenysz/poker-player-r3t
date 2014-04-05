@@ -31,8 +31,8 @@ public class AfterFlopper {
         RankingService rs = new RankingService();
         Ranking rank = rs.getRanking(cardList);
         if (rank != null) {
-            if (rank.rank > Rank.PAIR.getValue()) {
-                return gameState.getCurrentByIn() * rank.rank;
+            if (rank.getRank()> Rank.PAIR.getValue()) {
+                return gameState.getCurrentByIn() * rank.getRank();
             }
             return gameState.getCurrentByIn() + 30;
         }

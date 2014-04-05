@@ -8,9 +8,9 @@ import com.google.gson.JsonPrimitive;
  * Created by roland on 2014.04.05..
  */
 public class Ranking {
-    public Integer rank;
-    public Integer value;
-    public Integer secondValue;
+    private Integer rank;
+    private Integer value;
+    private Integer secondValue;
 
     public Ranking(JsonElement element) {
         JsonObject jsonObject = element.getAsJsonObject();
@@ -26,5 +26,17 @@ public class Ranking {
             value = Integer.parseInt(jsonObject.getAsJsonPrimitive("value").toString());
             secondValue = Integer.parseInt(jsonObject.getAsJsonPrimitive("second_value").toString());
         }
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public Integer getSecondValue() {
+        return secondValue;
     }
 }
