@@ -13,13 +13,14 @@ public class Player {
 
     public static int betRequest(JsonElement request) {
         RankingService rs = new RankingService();
+        
+        GameState state = new GameState(request);
         int playerIndex = getState(request).get("in_action").getAsInt();
         JsonObject player = getState(request).getAsJsonArray("players").get(playerIndex).getAsJsonObject();
         JsonObject card1 = player.getAsJsonArray("hole_cards").get(0).getAsJsonObject();
         JsonObject card2 = player.getAsJsonArray("hole_cards").get(1).getAsJsonObject();
 
         int currentByIn = request.getAsJsonObject().get("current_buy_in").getAsInt();
-
         String rank1 = card1.get("rank").getAsString();
         String rank2 = card2.get("rank").getAsString();
 
