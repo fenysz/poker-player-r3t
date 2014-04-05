@@ -22,17 +22,17 @@ public class PreFlopperTest {
     @Test
     public void testOneColor() {
         PreFlopper flopper = new PreFlopper(new TestGameState("diamonds","diamonds","4", "5", 100, 50 ));
-        assertEquals(300, flopper.bet());
+        assertEquals(350, flopper.bet());
     }
     @Test
     public void testPair() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","4", "4", 100, 50 ));
-        assertEquals(600, flopper.bet());
+        assertEquals(650, flopper.bet());
     }
     @Test
     public void testHigh() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","K", "A", 100, 50 ));
-        assertEquals(200, flopper.bet());
+        assertEquals(250, flopper.bet());
     }
     
     public static class TestGameState implements IGameState {
