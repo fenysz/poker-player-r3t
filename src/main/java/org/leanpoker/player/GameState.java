@@ -13,7 +13,7 @@ import com.google.gson.JsonElement;
 public class GameState {
 
     GameState(JsonElement element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public CardRound getCardRound(){
