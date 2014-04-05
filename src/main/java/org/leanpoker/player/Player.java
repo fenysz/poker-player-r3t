@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.leanpoker.player.preflop.PreFlopper;
 
 
 public class Player {
@@ -15,9 +16,8 @@ public class Player {
         RankingService rs = new RankingService();
         
         GameState state = new GameState(request);
-
-        if (state.getCard1().rank.equals(state.getCard2().rank)) {
-            return state.getCurrentByIn() + 600;
+        if(state.getCardsOnBoard().isEmpty()){
+            return new PreFlopper(state).bet();
         }
 
         for (Map.Entry<String, JsonElement> entry : request.getAsJsonObject().entrySet()) {
