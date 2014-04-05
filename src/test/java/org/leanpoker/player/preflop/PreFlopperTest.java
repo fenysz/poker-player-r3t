@@ -22,17 +22,17 @@ public class PreFlopperTest {
     @Test
     public void testOneColor() {
         PreFlopper flopper = new PreFlopper(new TestGameState("diamonds","diamonds","4", "5", 100, 50 ));
-        assertEquals(350, flopper.bet());
+        assertEquals(250, flopper.bet());
     }
     @Test
     public void testPair() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","4", "4", 100, 50 ));
-        assertEquals(650, flopper.bet());
+        assertEquals(350, flopper.bet());
     }
     @Test
     public void testHigh() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","K", "A", 100, 50 ));
-        assertEquals(250, flopper.bet());
+        assertEquals(150, flopper.bet());
     }
     
     public static class TestGameState implements IGameState {
@@ -86,7 +86,7 @@ public class PreFlopperTest {
 
         @Override
         public int getStack() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return 1000;
         }
     
     }

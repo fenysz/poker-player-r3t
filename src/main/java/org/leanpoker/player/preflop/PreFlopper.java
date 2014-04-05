@@ -23,18 +23,37 @@ public class PreFlopper {
         Card card1 = gameState.getCard1();
         Card card2 = gameState.getCard2();
         
+        int raiseValue = 0;
+        boolean fineHand = false;
+        
         if(card1.getRank().equals(card2.getRank())) {
-            return getRaiseValue(6);
-        } else if(card1.getSuit().equals(card2.getSuit())){
-            return getRaiseValue(3);
-        } else if(isLetter(card1.getRank()) && isLetter(card2.getRank())){
-            return getRaiseValue(2);
+            fineHand = true ;
+            raiseValue += 3;
+        } 
+        if(card1.getSuit().equals(card2.getSuit())){
+            fineHand = true ;
+            raiseValue += 2;
+        } 
+        if(isLetter(card1.getRank()) && isLetter(card2.getRank())){
+            fineHand = true ;
+            raiseValue += 1;
         }
+        
+        if(gameState.getCurrentByIn() >= gameState.getStack() / 2){
+            return 0;
+        }
+        
+        
+        if(fineHand){
+            return getRaiseValue(raiseValue);
+        }
+        
         return gameState.getCurrentByIn();
     }
     
     private int getRaiseValue(int multiplier){
-         return gameState.getCurrentByIn() + gameState.getMinimumRaise() * multiplier;
+        int raiseMoney = Math.round(gameState.getStack() / 10);
+        return gameState.getCurrentByIn() + raiseMoney * multiplier;
     }
 
     private boolean isLetter(String rank) {

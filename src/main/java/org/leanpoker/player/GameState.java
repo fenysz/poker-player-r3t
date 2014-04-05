@@ -23,6 +23,7 @@ public class GameState implements IGameState {
 
     int minimumRaise;
     int stack;
+    int remainingMoney;
 
     List<Card> communityCards;
 
@@ -49,6 +50,7 @@ public class GameState implements IGameState {
         communityCards = Card.parse(communityCardsJson);
     }
 
+    @Override
     public int getMinimumRaise() {
         return minimumRaise;
     }
