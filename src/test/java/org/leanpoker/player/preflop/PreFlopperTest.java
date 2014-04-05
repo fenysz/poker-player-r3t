@@ -83,6 +83,11 @@ public class PreFlopperTest {
         public int getMinimumRaise() {
             return minBet;
         }
+
+        @Override
+        public int getStack() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     
     }
 }
