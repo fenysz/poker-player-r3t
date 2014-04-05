@@ -22,7 +22,7 @@ public class PreFlopperTest {
     @Test
     public void testOneColor() {
         PreFlopper flopper = new PreFlopper(new TestGameState("diamonds","diamonds","4", "5", 100, 50 ));
-        assertEquals(250, flopper.bet());
+        assertEquals(0, flopper.bet());
     }
     @Test
     public void testPair() {
