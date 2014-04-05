@@ -7,6 +7,7 @@ package org.leanpoker.player.preflop;
 import org.leanpoker.player.Card;
 import org.leanpoker.player.GameState;
 import org.leanpoker.player.IGameState;
+import org.leanpoker.player.folder.Folder;
 
 /**
  *
@@ -43,15 +44,15 @@ public class PreFlopper {
             raiseValue += 1;
         }
         
-        if(gameState.getCurrentByIn() >= gameState.getStack() * 0.75){
-            return 0;
-        }
-        
-        
         if(fineHand){
             return getRaiseValue(raiseValue);
         } else {
-            return 0;
+            Folder folder = new Folder(gameState);
+            if(folder.isHaveToFold()){
+                return 0;
+            } else {
+                return gameState.getCurrentByIn();
+            }
         }
     }
     
