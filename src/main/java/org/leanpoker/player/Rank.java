@@ -28,4 +28,8 @@ public enum Rank {
         throw new IllegalArgumentException();
     }
 
+    public int getValue(){
+        return value;
+    }
+
 }

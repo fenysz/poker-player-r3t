@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
-    
+
     String testString = "{\n" +
 "    \"small_blind\": 10,\n" +
 "    \"current_buy_in\": 320,\n" +
@@ -65,17 +65,22 @@ public class PlayerTest {
 "        {\n" +
 "            \"rank\": \"6\",\n" +
 "            \"suit\": \"clubs\"\n" +
+"        },\n" +
+"        {\n" +
+"            \"rank\": \"4\",\n" +
+"            \"suit\": \"clubs\"\n" +
+"        },\n" +
+"        {\n" +
+"            \"rank\": \"3\",\n" +
+"            \"suit\": \"clubs\"\n" +
 "        }\n" +
 "    ]\n" +
 "}";
 
     @Test
     public void testBetRequest() throws Exception {
-
+        RankingService.url="http://192.168.57.181:2048";
         JsonElement jsonElement = new JsonParser().parse(testString);
-        
-        
-        assertEquals(0, Player.betRequest(jsonElement));
-
+        assertEquals(320, Player.betRequest(jsonElement));
     }
 }

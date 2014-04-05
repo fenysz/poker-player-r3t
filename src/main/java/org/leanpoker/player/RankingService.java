@@ -15,9 +15,10 @@ import java.util.List;
  */
 public class RankingService {
 
+    public static String url="http://localhost:2048";
+
     public Ranking getRanking(List<Card> cardList) {
         try {
-            String url = "http://localhost:2048";
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
