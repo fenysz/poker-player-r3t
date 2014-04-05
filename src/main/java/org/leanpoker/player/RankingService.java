@@ -50,6 +50,8 @@ public class RankingService {
             return rank;
 
         } catch (Exception e) {
+            System.out.println("url"+url);
+            System.out.println(e.getLocalizedMessage());
             e.printStackTrace();
             return null;
         }
