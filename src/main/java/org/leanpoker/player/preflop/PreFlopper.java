@@ -24,13 +24,17 @@ public class PreFlopper {
         Card card2 = gameState.getCard2();
         
         if(card1.getRank().equals(card2.getRank())) {
-            return gameState.getMinimumRaise() * 6;
+            return getRaiseValue(6);
         } else if(card1.getSuit().equals(card2.getSuit())){
-            return gameState.getMinimumRaise() * 3;
+            return getRaiseValue(3);
         } else if(isLetter(card1.getRank()) && isLetter(card2.getRank())){
-            return gameState.getMinimumRaise() * 2;
+            return getRaiseValue(2);
         }
         return gameState.getCurrentByIn();
+    }
+    
+    private int getRaiseValue(int multiplier){
+         return gameState.getCurrentByIn() + gameState.getMinimumRaise() * multiplier;
     }
 
     private boolean isLetter(String rank) {
