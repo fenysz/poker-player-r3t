@@ -22,7 +22,9 @@ public class GameState implements IGameState {
 
     int currentByIn;
     int playerIndex;
-
+    
+    int minimumRaise;
+    
     List<Card> communityCards;
 
     GameState(JsonElement element) {
@@ -30,6 +32,8 @@ public class GameState implements IGameState {
         JsonObject player = getState(element).getAsJsonArray("players").get(playerIndex).getAsJsonObject();
         JsonObject jsonCard1 = player.getAsJsonArray("hole_cards").get(0).getAsJsonObject();
         JsonObject jsonCard2 = player.getAsJsonArray("hole_cards").get(1).getAsJsonObject();
+        
+        minimumRaise = getState(element).get("minimum_raise").getAsInt();
 
         currentByIn = element.getAsJsonObject().get("current_buy_in").getAsInt();
         String rank1 = jsonCard1.get("rank").getAsString();
@@ -47,6 +51,10 @@ public class GameState implements IGameState {
             JsonObject cardObject = communityCardsJson.get(i).getAsJsonObject();
             communityCards.add(new Card(cardObject.get("rank").getAsString(), cardObject.get("suit").getAsString()));
         }
+    }
+
+    public int getMinimumRaise() {
+        return minimumRaise;
     }
 
     public CardRound getCardRound() {

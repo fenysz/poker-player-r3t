@@ -81,6 +81,6 @@ public class PlayerTest {
     public void testBetRequest() throws Exception {
         RankingService.url="http://192.168.57.181:2048";
         JsonElement jsonElement = new JsonParser().parse(testString);
-        assertEquals(640, Player.betRequest(jsonElement));
+        assertEquals(480, Player.betRequest(jsonElement));
     }
 }

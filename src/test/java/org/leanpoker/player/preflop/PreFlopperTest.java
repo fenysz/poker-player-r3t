@@ -26,7 +26,7 @@ public class PreFlopperTest {
     }
     
     public static class TestGameState implements IGameState {
-
+        
         @Override
         public Card getCard1() {
             return new Card("3", "diamonds");
@@ -49,6 +49,11 @@ public class PreFlopperTest {
 
         @Override
         public List<Card> getCardsOnBoard() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public int getMinimumRaise() {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     

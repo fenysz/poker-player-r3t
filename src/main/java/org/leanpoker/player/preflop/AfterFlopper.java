@@ -32,10 +32,10 @@ public class AfterFlopper {
         Ranking rank = rs.getRanking(cardList);
         if (rank != null) {
             if (rank.getRank()> Rank.PAIR.getValue()) {
-                return gameState.getCurrentByIn() * rank.getRank();
+                return gameState.getMinimumRaise() * rank.getRank();
             }
-            return gameState.getCurrentByIn() + 30;
+            return gameState.getMinimumRaise() + 30;
         }
-        return gameState.getCurrentByIn();
+        return gameState.getMinimumRaise();
     }
 }
