@@ -25,9 +25,7 @@ public class AfterFlopper {
         cardList = new ArrayList<Card>();
         cardList.add(card1);
         cardList.add(card2);
-        for (Card card : gameState.getCardsOnBoard()) {
-            cardList.add(card);
-        }
+        cardList.addAll(gameState.getCardsOnBoard());
     }
 
     public int bet() {
@@ -36,25 +34,27 @@ public class AfterFlopper {
             if (rank.getRank() >= Rank.FLUSH.getValue()) {
                 return gameState.getStack();
             }
-            if (rank.getRank() >= Rank.PAIR.getValue()) {
-                return gameState.getCurrentByIn() + gameState.getMinimumRaise() * rank.getRank();
-            }
-            Map<String,Integer> map = new HashMap<>();
+            Map<String, Integer> map = new HashMap<>();
             for (Card card : cardList) {
-                Integer colorCounter  =map.get(card.getSuit());
-                if(colorCounter==null){
+                Integer colorCounter = map.get(card.getSuit());
+                if (colorCounter == null) {
                     colorCounter = 1;
                     map.put(card.getSuit(), colorCounter);
                 } else {
                     colorCounter++;
                     map.put(card.getSuit(), colorCounter);
-                }      
-            }
-            for (Map.Entry<String, Integer> entry : map.entrySet()) {
-                Integer number = entry.getValue();
-                if(number >=4 ){
-                    return gameState.getCurrentByIn() + gameState.getMinimumRaise()*2;
                 }
+            }
+            if (gameState.getCardsOnBoard().size() < 5) {
+                for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                    Integer number = entry.getValue();
+                    if (number >= 4) {
+                        return gameState.getCurrentByIn() + gameState.getMinimumRaise() * 2;
+                    }
+                }
+            }
+            if (rank.getRank() >= Rank.PAIR.getValue()) {
+                return gameState.getCurrentByIn() + gameState.getMinimumRaise() * rank.getRank();
             }
         }
         return 0;
