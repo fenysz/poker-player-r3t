@@ -48,7 +48,7 @@ public class PreFlopper {
         }
         if (Math.abs(card1.getIntRank() - card2.getIntRank()) == 1 || Math.abs(card1.getIntRank() - card2.getIntRank()) == 12) {
             fineHand = true;
-            raiseValue = 0;
+            raiseValue += 1;
         }
 
         if(fineHand){

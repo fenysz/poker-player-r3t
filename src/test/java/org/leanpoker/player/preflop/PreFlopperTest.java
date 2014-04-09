@@ -4,34 +4,45 @@
  */
 package org.leanpoker.player.preflop;
 
-import java.util.List;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.leanpoker.player.Card;
-import org.leanpoker.player.IGameState;
+
+import static org.junit.Assert.assertEquals;
 
 /**
- *
  * @author athalay
  */
 public class PreFlopperTest {
-    
+
     public PreFlopperTest() {
     }
 
     @Test
-    public void testOneColor() {
-        PreFlopper flopper = new PreFlopper(new TestGameState("diamonds","diamonds","4", "5", 100, 50 ));
+    public void testOneHigh() {
+        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS", "diamonds", "8", "K", 10, 0));
         assertEquals(0, flopper.bet());
     }
+
+    @Test
+    public void testOneColor() {
+        PreFlopper flopper = new PreFlopper(new TestGameState("diamonds", "diamonds", "2", "5", 100, 50));
+        assertEquals(0, flopper.bet());
+    }
+
     @Test
     public void testPair() {
-        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","4", "4", 100, 50 ));
+        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS", "diamonds", "4", "4", 100, 50));
         assertEquals(150, flopper.bet());
     }
+
     @Test
     public void testHigh() {
-        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS","diamonds","K", "A", 100, 50 ));
+        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS", "diamonds", "Q", "A", 100, 50));
         assertEquals(150, flopper.bet());
+    }
+
+    @Test
+    public void testHighAndStraighSuspicion() {
+        PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS", "diamonds", "K", "A", 100, 50));
+        assertEquals(250, flopper.bet());
     }
 }

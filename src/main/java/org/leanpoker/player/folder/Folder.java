@@ -19,7 +19,7 @@ public class Folder {
     }
     
     public boolean isHaveToFold(){
-        String cards = gameState.getCard1().getRank() + gameState.getCard2().getRank();
+        String cards = (gameState.getCard1().getRank() + gameState.getCard2().getRank()).toUpperCase();
         
         if(cards.contains("A") && cards.contains("K")){
             return false;

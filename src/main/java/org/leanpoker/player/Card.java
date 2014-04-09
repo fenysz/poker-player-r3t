@@ -14,8 +14,8 @@ public class Card {
     String suit;
 
     public Card(String rank, String suit) {
-        this.rank = rank;
-        this.suit = suit;
+        this.rank = rank.toUpperCase();
+        this.suit = suit.toUpperCase();
     }
 
     public String getRank() {
