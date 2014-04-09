@@ -32,6 +32,8 @@ public class AfterFlopper {
         Ranking rank = RankingService.getRanking(cardList);
         if (rank != null) {
             gameState.setCurrentRank(rank.getRank());
+            int raiseValue = 0;
+            boolean finehand = false;
             if (rank.getRank() >= Rank.FLUSH.getValue()) {
                 return gameState.getStack();
             }
@@ -50,14 +52,38 @@ public class AfterFlopper {
                 for (Map.Entry<String, Integer> entry : map.entrySet()) {
                     Integer number = entry.getValue();
                     if (number >= 4) {
-                        return gameState.getCurrentByIn() + gameState.getMinimumRaise() * 2;
+                        raiseValue += 2;
+                        finehand = true;
                     }
                 }
             }
             if (rank.getRank() >= Rank.PAIR.getValue()) {
-                return gameState.getCurrentByIn() + gameState.getMinimumRaise() * rank.getRank();
+                if (isLetter(rank.getValue())) {
+                    raiseValue += rank.getRank();
+                } else {
+                    raiseValue += 1;
+                }
+                finehand = true;
+            }
+            if (finehand) {
+                return getRaiseValue(raiseValue);
             }
         }
         return 0;
+    }
+
+    private int getRaiseValue(int multiplier) {
+        int raiseMoney = gameState.getMinimumRaise();
+        return gameState.getCurrentByIn() + raiseMoney * multiplier;
+    }
+
+
+    private boolean isLetter(String rank) {
+        try {
+            Integer.parseInt(rank);
+        } catch (Exception e) {
+            return true;
+        }
+        return false;
     }
 }

@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class Ranking {
     private Integer rank;
-    private Integer value;
-    private Integer secondValue;
+    private String value;
+    private String secondValue;
     private List<Card> usedCards;
 
     public Ranking(JsonElement element) {
@@ -26,8 +26,8 @@ public class Ranking {
             }
         } catch (Exception e) {
             rank = Integer.parseInt(jsonObject.getAsJsonPrimitive("rank").getAsString());
-            value = Integer.parseInt(jsonObject.getAsJsonPrimitive("value").getAsString());
-            secondValue = Integer.parseInt(jsonObject.getAsJsonPrimitive("second_value").getAsString());
+            value = jsonObject.getAsJsonPrimitive("value").getAsString();
+            secondValue = jsonObject.getAsJsonPrimitive("second_value").getAsString();
             usedCards = Card.parse(jsonObject.getAsJsonArray("cards_used"));
         }
     }
@@ -36,11 +36,11 @@ public class Ranking {
         return rank;
     }
 
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 
-    public Integer getSecondValue() {
+    public String getSecondValue() {
         return secondValue;
     }
 }

@@ -87,13 +87,4 @@ public class PlayerTest {
         JsonElement jsonElement = new JsonParser().parse(testString);
         assertEquals(560, Player.betRequest(jsonElement));
     }
-
-
-    @Test
-    public void testNotRaised() {
-        JsonElement jsonElement = new JsonParser().parse(testString);
-        int bet = Player.betRequest(jsonElement);
-        assertEquals(320, bet);
-        assertEquals(7, Player.raisedInOrbit);
-    }
 }
