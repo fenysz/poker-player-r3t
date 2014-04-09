@@ -25,7 +25,7 @@ public class Player {
         }
 
         if ((state.getStack() - bet) < (state.getMinimumRaise() * 4) && (state.getCurrentRank() < Rank.TREE_OF_A_KIND.getValue())) {
-            System.out.println("stack protection, bet: " + bet + " stack: " + state.getStack());
+            System.out.println("stack protection, bet: " + bet + " stack: " + state.getStack() + " minRaise: " + state.getMinimumRaise()+" rank: "+state.getCurrentRank());
             return 0;
         }
 
