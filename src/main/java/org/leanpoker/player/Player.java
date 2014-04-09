@@ -6,7 +6,7 @@ import org.leanpoker.player.preflop.AfterFlopper;
 import org.leanpoker.player.preflop.PreFlopper;
 
 public class Player {
-    static final String VERSION = "v0.49";
+    static final String VERSION = "v0.50";
     public static int lastOrbit = 0;
     public static int lastRaisedRank = 0;
 
@@ -24,9 +24,9 @@ public class Player {
             }
         }
 
-        if ((state.getStack() - bet) < (state.getMinimumRaise() * 4) && (state.getCurrentRank() < Rank.TREE_OF_A_KIND.getValue())) {
-            System.out.println("stack protection, bet: " + bet + " stack: " + state.getStack() + " minRaise: " + state.getMinimumRaise()+" rank: "+state.getCurrentRank());
-            return 0;
+        if (bet > 0 && (state.getStack() - bet) < (state.getMinimumRaise() * 4) && (state.getCurrentRank() < Rank.TREE_OF_A_KIND.getValue())) {
+            System.out.println("stack protection, bet: " + bet + " stack: " + state.getStack() + " minRaise: " + state.getMinimumRaise() + " rank: " + state.getCurrentRank()+" buyin: "+state.getCurrentByIn());
+            bet = 0;
         }
 
         if (Player.lastOrbit == state.getOrbits()) {
