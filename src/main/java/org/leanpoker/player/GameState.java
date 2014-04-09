@@ -23,12 +23,13 @@ public class GameState implements IGameState {
 
     int minimumRaise;
     int stack;
-    int remainingMoney;
 
     boolean isBlind;
 
     List<Card> communityCards;
     private int orbits;
+
+    int currentRank;
 
     GameState(JsonElement element) {
         playerIndex = getState(element).get("in_action").getAsInt();
@@ -49,6 +50,11 @@ public class GameState implements IGameState {
 
         card1 = new Card(rank1, suit1);
         card2 = new Card(rank2, suit2);
+        if (card1.getIntRank() == card2.getIntRank()) {
+            currentRank = Rank.PAIR.getValue();
+        } else {
+            currentRank = 0;
+        }
         JsonArray communityCardsJson = getState(element).get("community_cards").getAsJsonArray();
 
         communityCards = Card.parse(communityCardsJson);
@@ -112,4 +118,15 @@ public class GameState implements IGameState {
     public int getOrbits() {
         return orbits;
     }
+
+    @Override
+    public int getCurrentRank() {
+        return currentRank;
+    }
+
+    @Override
+    public void setCurrentRank(int rank) {
+        currentRank = rank;
+    }
+
 }

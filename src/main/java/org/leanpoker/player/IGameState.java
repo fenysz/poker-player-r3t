@@ -29,4 +29,8 @@ public interface IGameState {
     boolean isBlind();
 
     int getOrbits();
+
+    int getCurrentRank();
+
+    void setCurrentRank(int rank);
 }

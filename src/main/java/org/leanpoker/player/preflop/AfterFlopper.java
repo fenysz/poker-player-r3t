@@ -31,6 +31,7 @@ public class AfterFlopper {
     public int bet() {
         Ranking rank = RankingService.getRanking(cardList);
         if (rank != null) {
+            gameState.setCurrentRank(rank.getRank());
             if (rank.getRank() >= Rank.FLUSH.getValue()) {
                 return gameState.getStack();
             }

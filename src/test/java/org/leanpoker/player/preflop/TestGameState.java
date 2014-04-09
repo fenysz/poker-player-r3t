@@ -75,4 +75,14 @@ public class TestGameState implements IGameState {
         return 1;
     }
 
+    @Override
+    public int getCurrentRank() {
+        return 0;
+    }
+
+    @Override
+    public void setCurrentRank(int rank) {
+
+    }
+
 }

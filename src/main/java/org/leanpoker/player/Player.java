@@ -6,8 +6,9 @@ import org.leanpoker.player.preflop.AfterFlopper;
 import org.leanpoker.player.preflop.PreFlopper;
 
 public class Player {
-    static final String VERSION = "v0.47";
+    static final String VERSION = "v0.48";
     public static int raisedInOrbit = 0;
+    public static int lastRaisedRank = -1;
 
     public static int betRequest(JsonElement request) {
         GameState state = new GameState(request);
@@ -18,12 +19,18 @@ public class Player {
             bet = new AfterFlopper(state).bet();
         }
         if (bet > state.getCurrentByIn()) {
-            if (Player.raisedInOrbit == 0) {
+            if (Player.raisedInOrbit == 0 && lastRaisedRank <= state.getCurrentRank()) {
                 Player.raisedInOrbit = state.getOrbits();
+                lastRaisedRank = state.getCurrentRank();
+            } else {
+                lastRaisedRank = 0;
                 bet = state.getCurrentByIn();
             }
         } else {
             Player.raisedInOrbit = 0;
+        }
+        if ((state.getStack() - bet) < (state.getMinimumRaise() * 4) && (state.getCurrentRank() < Rank.TREE_OF_A_KIND.getValue())) {
+            return 0;
         }
         return bet;
     }

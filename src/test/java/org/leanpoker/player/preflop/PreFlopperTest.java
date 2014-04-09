@@ -44,6 +44,6 @@ public class PreFlopperTest {
     @Test
     public void testHighAndStraightSuspicion() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS", "diamonds", "K", "A", 100, 50));
-        assertEquals(250, flopper.bet());
+        assertEquals(50, flopper.bet());
     }
 }
