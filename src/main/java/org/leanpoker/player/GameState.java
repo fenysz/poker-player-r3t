@@ -34,6 +34,7 @@ public class GameState implements IGameState {
     GameState(JsonElement element) {
         playerIndex = getState(element).get("in_action").getAsInt();
         orbits = getState(element).get("orbits").getAsInt();
+        System.out.println("orbit: " + orbits);
         JsonObject player = getState(element).getAsJsonArray("players").get(playerIndex).getAsJsonObject();
         JsonObject jsonCard1 = player.getAsJsonArray("hole_cards").get(0).getAsJsonObject();
         JsonObject jsonCard2 = player.getAsJsonArray("hole_cards").get(1).getAsJsonObject();

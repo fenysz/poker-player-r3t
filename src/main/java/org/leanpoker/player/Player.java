@@ -30,6 +30,7 @@ public class Player {
             Player.raisedInOrbit = 0;
         }
         if ((state.getStack() - bet) < (state.getMinimumRaise() * 4) && (state.getCurrentRank() < Rank.TREE_OF_A_KIND.getValue())) {
+            System.out.println("stack protection, bet: " + bet + " stack: " + state.getStack());
             return 0;
         }
         return bet;
