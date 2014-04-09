@@ -5,6 +5,7 @@
 package org.leanpoker.player.preflop;
 
 import org.junit.Test;
+import org.leanpoker.player.Player;
 
 import static org.junit.Assert.assertEquals;
 
@@ -41,7 +42,7 @@ public class PreFlopperTest {
     }
 
     @Test
-    public void testHighAndStraighSuspicion() {
+    public void testHighAndStraightSuspicion() {
         PreFlopper flopper = new PreFlopper(new TestGameState("HEARTS", "diamonds", "K", "A", 100, 50));
         assertEquals(250, flopper.bet());
     }

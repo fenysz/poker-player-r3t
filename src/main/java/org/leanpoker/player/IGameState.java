@@ -19,12 +19,14 @@ public interface IGameState {
     int getCurrentByIn();
 
     int getPlayerIndex();
-    
+
     List<Card> getCardsOnBoard();
-    
+
     int getMinimumRaise();
 
     int getStack();
 
     boolean isBlind();
+
+    int getOrbits();
 }

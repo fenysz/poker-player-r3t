@@ -69,5 +69,10 @@ public class TestGameState implements IGameState {
     public boolean isBlind() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public int getOrbits() {
+        return 1;
+    }
+
 }
